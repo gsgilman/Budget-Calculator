@@ -1,13 +1,13 @@
 #budget-calculator {
   display: flex;
-  margin: 7% auto 0;
+  margin: 1% auto 0;
   width: 40%;
   flex-direction: column;
   border-radius: 5px;
   background-color: hsl(0, 7%, 92%);
 }
 
-#budget-calculator .header {
+#budget-calculator .calculator-header {
   width: 100%;
   color: white;
   padding-bottom: 5px;
@@ -16,7 +16,7 @@
   text-align: center;
 }
 
-#budget-calculator .header span {
+#budget-calculator .calculator-header span {
   padding-left: 5px;
   font-size: 50px;
   font-weight: bold;

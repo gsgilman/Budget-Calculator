@@ -1,29 +1,21 @@
 import React, { useState } from "react";
+import Catalog from "./Catalog";
 import "./BudgetCalculator.css"
 
 const isNumberRegex = /(^\d+$)|(^$)/;   
 
 const BudgetCalculator = ({ items }) => {
-    const [budget, setBudget] = useState(0);
+    const [budget, setBudget] = useState("");
 
     const budgetOnChange = (e) => {
         if (isNumberRegex.test(e.target.value)) {
             setBudget(e.target.value);
         }
     }
-    
-    const sortItemsByType = (itemsArr) => {
-        const itemMap = {}
-        itemsArr.forEach((i) => {
-            itemMap[i.type] = itemMap[i.type] ? [i] : itemMap[i.type] << i
-        })
-        console.log(itemMap)
-        return itemMap;
-    }
-
+   
     return (
         <div id="budget-calculator">
-            <div className="header">
+            <div className="calculator-header">
                 <span>
                     Budget Calculator
                 </span>
@@ -43,6 +35,7 @@ const BudgetCalculator = ({ items }) => {
                     />
                 </div>
             </div>
+            <Catalog items={items} />
         </div>
     );
 };
