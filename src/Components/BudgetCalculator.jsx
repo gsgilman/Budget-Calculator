@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Catalog from "./Catalog";
+import Footer from "./Footer";
+    
 import "./BudgetCalculator.css"
 
 const isNumberRegex = /(^\d+$)|(^$)/;   
@@ -50,6 +52,7 @@ const BudgetCalculator = ({ items }) => {
                 </div>
             </div>
             <Catalog items={items} onChange={selectedItemsOnChange} />
+            <Footer selectedItems={selectedItems} budget={budget} />
         </div>
     );
 };
