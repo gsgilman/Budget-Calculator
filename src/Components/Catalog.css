@@ -1,12 +1,13 @@
 .catalog {
   color: #575757;
+  padding-bottom: 5px;
 }
 
 .catalog .item-select .item-select-title {
   font-size: 18px;
   font-weight: bold;
   padding: 5px;
-  background-color: #a4a3a3;
+  background-color: #8dd3f4;
   color: white;
 }
 

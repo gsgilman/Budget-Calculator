@@ -4,7 +4,12 @@
   width: 40%;
   flex-direction: column;
   border-radius: 5px;
-  background-color: hsl(0, 7%, 92%);
+  border: 1px solid #575757;
+  background-color: #f5f2f2;
+}
+
+#budget-calculator input {
+  background-color: #f5f2f2;
 }
 
 #budget-calculator .calculator-header {
@@ -13,6 +18,7 @@
   padding-bottom: 5px;
   border-radius: 5px 5px 0 0;
   background-color: #4fc3f7;
+  border-top: 3px solid #4fc3f7;
   text-align: center;
 }
 
@@ -43,9 +49,7 @@
 }
 
 #budget-calculator .budget-input-container .budget-input {
-  width: 94%;
+  width: 96%;
   border-bottom: 1px solid #575757;
-  background-color: #faf9f9;
-  background-color: #ebe8e8;
   font-size: 20px;
 }

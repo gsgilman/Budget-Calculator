@@ -7,48 +7,62 @@ const sortItemsByType = (itemsArr) => {
         if (!itemMap[i.type]) {
             itemMap[i.type] = [i];
         } else if (!itemMap[i.type].find((item) => item.name === i.name)) {
-            itemMap[i.type] = itemMap[i.type].concat(i)
+            // In the real world I avoid chaining so much logic together like this,
+            // however I will take the convinience here
+            itemMap[i.type] = itemMap[i.type].concat(i).sort((a, b) => a.lowPrice - b.lowPrice);
         }
     })
     return itemMap;
 }
 
-const Catalog = ({ items }) => {
+const Catalog = ({ items, onChange }) => {
     const sortedItems = sortItemsByType(items);
     const categories = Object.keys(sortedItems);
     return (
         <div className={"catalog"}>
             {categories.map((key, idx) => (
-                <ItemSelect items={sortedItems[key]} categoryName={key} key={key} isFirst={idx === 0} />
+                <ItemSelect
+                    items={sortedItems[key]}
+                    categoryName={key} key={key}
+                    isFirst={idx === 0}
+                    onChange={onChange}
+                />
             ))}
         </div>
     )
 }
 
-const ItemSelect = ({ items, categoryName, isFirst }) => {
+const ItemSelect = ({ items, categoryName, isFirst, onChange }) => {
     return (
+        // There is some redundancy here, overall the structure and
+        // of this component is a little less than ideal
         <div className={"item-select"}>
             {isFirst ? 
                 <div className={"item-select-title"}>
                     <div className={"header"}>
-                        <span className={"item-name"}>{categoryName.replace(/_/, " ")}</span>
-                        <span className={"low-price"}>High Price</span>
-                        <span className={"high-price"}>Low Price</span>
+                        <span className={"item-name"}>{categoryName.replaceAll(/_/ig, " ")}</span>
+                        <span className={"low-price"}>Low Price</span>
+                        <span className={"high-price"}>High Price</span>
                     </div>
                 </div>
                 :
                 <div className={"item-select-title"}>
-                    {categoryName.replace(/_/, " ")}
+                    {categoryName.replaceAll(/_/ig, " ")}
                 </div>
             }
-            
             <div className={"item-select-list"}>
                 {items.map((i, idx) => (
                     <div className={"item"} key={i.name + i.type + idx}>
                         <span className={"item-name"}>{i.name}</span>
                         <span className={"low-price"}>${i.lowPrice}</span>
                         <span className={"high-price"}>${i.highPrice}</span>
-                        <input type="radio" id={i.name + i.type + idx} name={categoryName} value={i.name}></input>
+                        <input
+                            type="radio"
+                            id={i.name + i.type + idx}
+                            name={categoryName}
+                            value={i.name}
+                            onChange={() => onChange(i)}
+                        ></input>
                     </div>
                 ))}
             </div>
