@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import "./BudgetCalculator.css"
 
 const isNumberRegex = /(^\d+$)|(^$)/;   
-const BudgetCalculator = (props) => {
-    const [budget, setBudget] = useState(null);
+
+const BudgetCalculator = ({ items }) => {
+    const [budget, setBudget] = useState(0);
 
     const budgetOnChange = (e) => {
         if (isNumberRegex.test(e.target.value)) {
             setBudget(e.target.value);
         }
+    }
+    
+    const sortItemsByType = (itemsArr) => {
+        const itemMap = {}
+        itemsArr.forEach((i) => {
+            itemMap[i.type] = itemMap[i.type] ? [i] : itemMap[i.type] << i
+        })
+        console.log(itemMap)
+        return itemMap;
     }
 
     return (
@@ -19,7 +29,6 @@ const BudgetCalculator = (props) => {
                 </span>
             </div>
             <div className="budget-form-container">
-                
                 <div className="budget-input-container">
                     <div className="budget-input-helptext">
                         Please enter your desired budget below
@@ -33,9 +42,6 @@ const BudgetCalculator = (props) => {
                         onChange={budgetOnChange}
                     />
                 </div>
-                {budget && <div>
-                 wow   
-                </div>}
             </div>
         </div>
     );
