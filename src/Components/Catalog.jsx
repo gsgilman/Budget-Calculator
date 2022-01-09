@@ -35,7 +35,7 @@ const Catalog = ({ items, onChange }) => {
 const ItemSelect = ({ items, categoryName, isFirst, onChange }) => {
     return (
         // There is some redundancy here, overall the structure and
-        // of this component is a little less than ideal
+        // styling of this component is a bit less than ideal
         <div className={"item-select"}>
             {isFirst ? 
                 <div className={"item-select-title"}>

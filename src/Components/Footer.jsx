@@ -16,13 +16,12 @@ const Footer = ({ selectedItems, budget }) => {
         setTotalHighPrice(highPrice);
     }, [selectedItems]);
     
-
     const parsedBudget = parseInt(budget);
-
     const calcOutcomeText = () => {
         if (parsedBudget && totalHighPrice) {
             if (parsedBudget > totalLowPrice && parsedBudget < totalHighPrice) {
-                return <span>The minumum cost is <span style={{ color: "green" }}>${parsedBudget - totalLowPrice}</span> under your budget and the maximum cost is <span style={{color: "red"}}>${totalHighPrice - parsedBudget}</span> over your budget.</span>;
+                return <span>The minumum cost is <span style={{ color: "green" }}>${parsedBudget - totalLowPrice}</span> under your budget
+                    and the maximum cost is <span style={{ color: "red" }}>${totalHighPrice - parsedBudget}</span> over your budget.</span>;
             } else if (parsedBudget > totalHighPrice) {
                 return <span>The maximum cost is <span style={{color: "green"}}>${totalHighPrice - parsedBudget}</span> under your budget.</span>
             } else {

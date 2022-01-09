@@ -11,7 +11,6 @@ import "./App.css";
 const App = () => {
   const [items, setItems] = useState([])
   return (
-
     <div className="App">
       <FirebaseFetcher setItems={setItems} />
       <BudgetCalculator items={items}/>
