@@ -1,9 +1,8 @@
 .footer {
   padding: 10px 5px;
-  font-size: 30px;
-  border-top: 1px solid #575757;
+  font-size: 20px;
+  border-top: 1px solid black;
   width: 99%;
-  color: #575757;
 }
 
 .footer .metrics .title {
@@ -28,7 +27,6 @@
 }
 
 .footer .outcome {
-  height: 40px;
   padding-top: 10px;
   text-align: center;
 }

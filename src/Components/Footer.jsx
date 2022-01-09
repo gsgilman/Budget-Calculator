@@ -22,11 +22,11 @@ const Footer = ({ selectedItems, budget }) => {
     const calcOutcomeText = () => {
         if (parsedBudget && totalHighPrice) {
             if (parsedBudget > totalLowPrice && parsedBudget < totalHighPrice) {
-                return "Your budget is in range.";
+                return <span>The minumum cost is <span style={{ color: "green" }}>${parsedBudget - totalLowPrice}</span> under your budget and the maximum cost is <span style={{color: "red"}}>${totalHighPrice - parsedBudget}</span> over your budget.</span>;
             } else if (parsedBudget > totalHighPrice) {
-                return `You are $${totalHighPrice - parsedBudget} under budget.`;
+                return <span>The maximum cost is <span style={{color: "green"}}>${totalHighPrice - parsedBudget}</span> under your budget.</span>
             } else {
-                return  `You are $${totalLowPrice - parsedBudget} over budget.`;
+                return  <span>The minimum cost is <span style={{color: "red"}}>${totalHighPrice - parsedBudget}</span> over your budget.</span>;
             }
         }
         return "";
@@ -35,9 +35,9 @@ const Footer = ({ selectedItems, budget }) => {
         <div className={"footer"}>
             <div className="metrics">
                 <div className="title">
-                    <div className="budget">YOUR BUDGET</div>
-                    <div className="total-low-price">MINIMUM COST</div>
-                    <div className="total-high-price">MAXIMUM COST</div>
+                    <div className="budget">YOUR<br/>BUDGET</div>
+                    <div className="total-low-price">MINIMUM<br/>COST</div>
+                    <div className="total-high-price">MAXIMUM<br/>COST</div>
                 </div>
                 <div className="data">
                     <div className="budget">${budget !== "" ? budget : 0 }</div>
